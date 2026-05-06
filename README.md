@@ -4,7 +4,7 @@ Tactical 1v1 RPG su griglia esagonale. Duello a turni con dadi, slancio, asta na
 
 🎮 **Gioca subito**: <https://valeriodolci.github.io/hex-tactics-play/>
 
-📦 **Sorgente** (privato): `ValerioDolci/hex-tactics` — TypeScript + Phaser 3 + Vite + Python (per training AI)
+📦 **Sorgente** (pubblico, leggibile ma non open-source): <https://github.com/ValerioDolci/hex-tactics> — TypeScript + Phaser 3 + Vite + Python (per training AI Deep CFR)
 
 ---
 
@@ -17,7 +17,10 @@ Tactical 1v1 RPG su griglia esagonale. Duello a turni con dadi, slancio, asta na
   - **Impeto**: timing nel round (chi più impeto gioca prima)
 - **Architettura tiri** a due componenti: **Variabile** (d6) + **Fissa** (bonus statici). Schivata morde solo la variabile, parata morde il totale.
 - **Asta nascosta sul movimento**: per attraversare la zona di reach di un nemico, si fa un'asta in slancio simultanea (mind game puro, niente dadi).
-- **Combat hot-seat** o **vs AI** (Easy = Utility heuristic, Hard = Decision Tree distillato da PPO MaskablePPO trained 250k step self-play).
+- **Combat hot-seat** o **vs AI** con tre livelli di difficoltà:
+  - *Facile* — heuristic basicAi
+  - *★ Difficile (Deep CFR)* — MLP small distillato da Deep CFR multi-matchup (197K params, sync, ~70% top-1 match con teacher equilibrium)
+  - *★★ Expert (Deep CFR full)* — disponibile in build multi-file (desktop), modello completo ONNX 3.5 MB
 
 ## Compatibilità
 
